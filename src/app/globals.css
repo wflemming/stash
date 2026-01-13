@@ -123,3 +123,65 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* Theme-aware app backgrounds */
+.app-bg {
+  @apply bg-gradient-to-b from-slate-50 via-slate-100 to-slate-50;
+}
+.dark .app-bg {
+  @apply bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950;
+}
+
+/* Theme-aware card backgrounds */
+.app-card {
+  @apply bg-white/80 border-slate-200;
+}
+.dark .app-card {
+  @apply bg-slate-800/50 border-slate-700;
+}
+
+/* Theme-aware secondary backgrounds */
+.app-card-secondary {
+  @apply bg-slate-100/80 border-slate-200/50;
+}
+.dark .app-card-secondary {
+  @apply bg-slate-800/40 border-slate-700/50;
+}
+
+/* Theme-aware subtle backgrounds */
+.app-subtle {
+  @apply bg-slate-100/50;
+}
+.dark .app-subtle {
+  @apply bg-slate-700/30;
+}
+
+/* Theme-aware header */
+.app-header {
+  @apply bg-white/80 border-slate-200/50;
+}
+.dark .app-header {
+  @apply bg-slate-950/80 border-slate-800/50;
+}
+
+/* Theme-aware text */
+.text-primary-app {
+  @apply text-slate-900;
+}
+.dark .text-primary-app {
+  @apply text-white;
+}
+
+.text-secondary-app {
+  @apply text-slate-600;
+}
+.dark .text-secondary-app {
+  @apply text-slate-400;
+}
+
+.text-muted-app {
+  @apply text-slate-500;
+}
+.dark .text-muted-app {
+  @apply text-slate-500;
+}

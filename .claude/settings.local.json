@@ -10,7 +10,8 @@
       "Bash(git push)",
       "Bash(git commit:*)",
       "Bash(dig:*)",
-      "WebFetch(domain:jomo.so)"
+      "WebFetch(domain:jomo.so)",
+      "Bash(git push:*)"
     ]
   }
 }

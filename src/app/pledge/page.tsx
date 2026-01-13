@@ -44,7 +44,7 @@ function StashContent() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 flex items-center justify-center px-6">
+    <div className="min-h-screen app-bg flex items-center justify-center px-6">
       <div className="w-full max-w-md">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -52,19 +52,19 @@ function StashContent() {
         >
           {/* Header */}
           <div className="text-center mb-8">
-            <Link href="/dashboard" className="text-slate-400 text-sm hover:text-white">
+            <Link href="/dashboard" className="text-secondary-app text-sm hover:text-primary-app">
               ← Back to Dashboard
             </Link>
           </div>
 
-          <Card className="bg-slate-800/50 border-slate-700 p-8">
+          <Card className="app-card border p-8">
             {/* Pattern Info */}
             <div className="text-center mb-8">
               <div className="text-5xl mb-4">{pattern.emoji}</div>
-              <h2 className="text-2xl font-bold text-white mb-2">
+              <h2 className="text-2xl font-bold text-primary-app mb-2">
                 Stash It
               </h2>
-              <p className="text-slate-400">
+              <p className="text-secondary-app">
                 {pattern.stashSuggestion}
               </p>
             </div>
@@ -72,10 +72,10 @@ function StashContent() {
             {/* Amount Selector */}
             <div className="mb-8">
               <div className="text-center mb-6">
-                <div className="text-5xl font-bold text-white mb-2">
+                <div className="text-5xl font-bold text-primary-app mb-2">
                   {formatCurrency(amount)}
                 </div>
-                <div className="text-slate-400">
+                <div className="text-secondary-app">
                   stash amount
                 </div>
               </div>
@@ -115,11 +115,11 @@ function StashContent() {
               animate={{ opacity: 1, scale: 1 }}
               className="bg-green-500/10 border border-green-500/30 rounded-xl p-6 mb-8 text-center"
             >
-              <p className="text-green-400 text-sm mb-2">Future You gets</p>
-              <p className="text-4xl font-bold text-green-400">
+              <p className="text-green-600 dark:text-green-400 text-sm mb-2">Future You gets</p>
+              <p className="text-4xl font-bold text-green-600 dark:text-green-400">
                 {formatCurrency(futureValue)}
               </p>
-              <p className="text-slate-400 text-sm mt-2">in 10 years at 8% avg return</p>
+              <p className="text-secondary-app text-sm mt-2">in 10 years at 8% avg return</p>
             </motion.div>
 
             {/* Stash Button */}
@@ -134,7 +134,7 @@ function StashContent() {
 
         {/* Success Dialog */}
         <Dialog open={showSuccess} onOpenChange={setShowSuccess}>
-          <DialogContent className="bg-slate-800 border-slate-700 text-center p-8">
+          <DialogContent className="bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-center p-8">
             <DialogTitle className="sr-only">Stash Success</DialogTitle>
             <AnimatePresence>
               {showSuccess && (
@@ -164,14 +164,14 @@ function StashContent() {
                   </div>
 
                   <div className="text-6xl mb-6">🎊</div>
-                  <h3 className="text-2xl font-bold text-white mb-2">
+                  <h3 className="text-2xl font-bold text-primary-app mb-2">
                     Future You Thanks You!
                   </h3>
-                  <p className="text-slate-400 mb-4">
+                  <p className="text-secondary-app mb-4">
                     You just invested {formatCurrency(amount)} in yourself
                   </p>
                   <div className="bg-green-500/10 border border-green-500/30 rounded-lg p-4 mb-6">
-                    <p className="text-green-400 font-semibold">
+                    <p className="text-green-600 dark:text-green-400 font-semibold">
                       That&apos;s {formatCurrency(futureValue)} in 10 years
                     </p>
                   </div>
@@ -195,7 +195,7 @@ export default function StashPage() {
   return (
     <Suspense fallback={
       <div className="min-h-screen bg-slate-950 flex items-center justify-center">
-        <div className="text-slate-400">Loading...</div>
+        <div className="text-secondary-app">Loading...</div>
       </div>
     }>
       <StashContent />

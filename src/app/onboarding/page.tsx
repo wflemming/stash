@@ -36,7 +36,7 @@ export default function Onboarding() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 flex items-center justify-center px-6">
+    <div className="min-h-screen app-bg flex items-center justify-center px-6">
       <div className="w-full max-w-md">
         <AnimatePresence mode="wait">
           {/* Step 1: Email */}
@@ -47,11 +47,11 @@ export default function Onboarding() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
             >
-              <Card className="bg-slate-800/50 border-slate-700 p-8">
-                <h2 className="text-2xl font-bold text-white mb-2 text-center">
+              <Card className="app-card border p-8">
+                <h2 className="text-2xl font-bold text-primary-app mb-2 text-center">
                   Let&apos;s get started
                 </h2>
-                <p className="text-slate-400 text-center mb-8">
+                <p className="text-secondary-app text-center mb-8">
                   Enter your email to begin your journey
                 </p>
                 <form onSubmit={handleEmailSubmit} className="space-y-4">
@@ -60,7 +60,7 @@ export default function Onboarding() {
                     placeholder="you@example.com"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="bg-slate-900 border-slate-600 text-white placeholder:text-slate-500"
+                    className="bg-slate-900 border-slate-600 text-primary-app placeholder:text-muted-app"
                     required
                   />
                   <Button
@@ -82,13 +82,13 @@ export default function Onboarding() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
             >
-              <Card className="bg-slate-800/50 border-slate-700 p-8">
+              <Card className="app-card border p-8">
                 <div className="text-center">
                   <div className="text-5xl mb-6">🏦</div>
-                  <h2 className="text-2xl font-bold text-white mb-2">
+                  <h2 className="text-2xl font-bold text-primary-app mb-2">
                     Connect Your Bank
                   </h2>
-                  <p className="text-slate-400 mb-8">
+                  <p className="text-secondary-app mb-8">
                     We&apos;ll analyze your spending to find opportunities
                   </p>
                   <div className="space-y-3">
@@ -101,12 +101,12 @@ export default function Onboarding() {
                     <Button
                       onClick={handleConnect}
                       variant="outline"
-                      className="w-full border-slate-600 text-slate-300 hover:bg-slate-700"
+                      className="w-full border-slate-600 text-primary-app hover:bg-slate-700"
                     >
                       Use Demo Data
                     </Button>
                   </div>
-                  <p className="text-slate-500 text-xs mt-6">
+                  <p className="text-muted-app text-xs mt-6">
                     Demo mode uses sample transactions to show how it works
                   </p>
                 </div>
@@ -122,7 +122,7 @@ export default function Onboarding() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
             >
-              <Card className="bg-slate-800/50 border-slate-700 p-8">
+              <Card className="app-card border p-8">
                 <div className="text-center">
                   <motion.div
                     animate={{ rotate: 360 }}
@@ -131,10 +131,10 @@ export default function Onboarding() {
                   >
                     🔍
                   </motion.div>
-                  <h2 className="text-2xl font-bold text-white mb-2">
+                  <h2 className="text-2xl font-bold text-primary-app mb-2">
                     Analyzing Your Spending
                   </h2>
-                  <p className="text-slate-400 mb-8">
+                  <p className="text-secondary-app mb-8">
                     AI is finding patterns in your transactions...
                   </p>
                   <div className="space-y-2">
@@ -144,7 +144,7 @@ export default function Onboarding() {
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ delay: i * 0.8 }}
-                        className="text-slate-500 text-sm"
+                        className="text-muted-app text-sm"
                       >
                         {text}
                       </motion.p>
@@ -163,10 +163,10 @@ export default function Onboarding() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
             >
-              <Card className="bg-slate-800/50 border-slate-700 p-8">
+              <Card className="app-card border p-8">
                 <div className="text-center mb-6">
                   <div className="text-5xl mb-4">✨</div>
-                  <h2 className="text-2xl font-bold text-white mb-2">
+                  <h2 className="text-2xl font-bold text-primary-app mb-2">
                     We Found Something
                   </h2>
                 </div>
@@ -181,13 +181,13 @@ export default function Onboarding() {
                   <div className="flex items-start gap-4">
                     <div className="text-3xl">{mockSpendingPatterns[0].emoji}</div>
                     <div>
-                      <h3 className="text-white font-semibold text-lg">
+                      <h3 className="text-primary-app font-semibold text-lg">
                         {mockSpendingPatterns[0].name}
                       </h3>
-                      <p className="text-slate-300 text-sm mt-1">
+                      <p className="text-primary-app text-sm mt-1">
                         {mockSpendingPatterns[0].insight}
                       </p>
-                      <p className="text-indigo-400 font-semibold mt-3">
+                      <p className="text-indigo-600 dark:text-indigo-400 font-semibold mt-3">
                         ~${mockSpendingPatterns[0].averageAmount}/week
                       </p>
                     </div>

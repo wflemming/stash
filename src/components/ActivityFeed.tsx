@@ -281,11 +281,11 @@ export function ActivityFeed({ compact = false, limit }: ActivityFeedProps) {
     if (activity.actionType === 'tucked') {
       return (
         <>
-          <span className="font-semibold text-white">{activity.userName}</span>
-          <span className="text-slate-400"> {action} </span>
-          <span className="font-semibold text-green-400">${activity.amountSaved}</span>
-          <span className="text-slate-400"> {' -> '} </span>
-          <span className="text-white">{activity.activityName}</span>
+          <span className="font-semibold text-primary-app">{activity.userName}</span>
+          <span className="text-secondary-app"> {action} </span>
+          <span className="font-semibold text-green-600 dark:text-green-400">${activity.amountSaved}</span>
+          <span className="text-secondary-app"> {' -> '} </span>
+          <span className="text-primary-app">{activity.activityName}</span>
           <span className="ml-1">{activity.emoji}</span>
         </>
       );
@@ -294,21 +294,21 @@ export function ActivityFeed({ compact = false, limit }: ActivityFeedProps) {
     if (activity.actionType === 'doing') {
       return (
         <>
-          <span className="font-semibold text-white">{activity.userName}</span>
-          <span className="text-slate-400"> {action} </span>
-          <span className="text-white">{activity.activityName}</span>
+          <span className="font-semibold text-primary-app">{activity.userName}</span>
+          <span className="text-secondary-app"> {action} </span>
+          <span className="text-primary-app">{activity.activityName}</span>
           <span className="ml-1">{activity.emoji}</span>
-          <span className="text-slate-400"> - saving </span>
-          <span className="font-semibold text-green-400">${activity.amountSaved}</span>
+          <span className="text-secondary-app"> - saving </span>
+          <span className="font-semibold text-green-600 dark:text-green-400">${activity.amountSaved}</span>
         </>
       );
     }
 
     return (
       <>
-        <span className="font-semibold text-white">{activity.userName}</span>
-        <span className="text-slate-400"> {action} </span>
-        <span className="text-white">{activity.activityName}</span>
+        <span className="font-semibold text-primary-app">{activity.userName}</span>
+        <span className="text-secondary-app"> {action} </span>
+        <span className="text-primary-app">{activity.activityName}</span>
         <span className="ml-1">{activity.emoji}</span>
       </>
     );
@@ -322,8 +322,8 @@ export function ActivityFeed({ compact = false, limit }: ActivityFeedProps) {
             key={i}
             className={`flex items-center gap-3 ${
               compact
-                ? 'bg-slate-800/30 rounded-lg p-3'
-                : 'bg-slate-800/50 border border-slate-700/50 rounded-xl p-4'
+                ? 'bg-slate-100/30 dark:bg-slate-800/30 rounded-lg p-3'
+                : 'bg-slate-100/50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700/50 rounded-xl p-4'
             } animate-pulse`}
           >
             <div className={`${compact ? 'w-8 h-8' : 'w-10 h-10'} rounded-full bg-slate-700`} />
@@ -353,8 +353,8 @@ export function ActivityFeed({ compact = false, limit }: ActivityFeedProps) {
             }}
             className={`flex items-start gap-3 ${
               compact
-                ? 'bg-slate-800/30 hover:bg-slate-800/50 rounded-lg p-3'
-                : 'bg-slate-800/50 border border-slate-700/50 hover:border-slate-600/50 rounded-xl p-4'
+                ? 'bg-slate-100/30 dark:bg-slate-800/30 hover:bg-slate-100/50 dark:bg-slate-800/50 rounded-lg p-3'
+                : 'bg-slate-100/50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700/50 hover:border-slate-600/50 rounded-xl p-4'
             } transition-colors duration-200 cursor-pointer group`}
           >
             {/* Avatar */}
@@ -363,7 +363,7 @@ export function ActivityFeed({ compact = false, limit }: ActivityFeedProps) {
                 compact ? 'w-8 h-8 text-xs' : 'w-10 h-10 text-sm'
               } rounded-full ${
                 avatarColors[activity.avatar] || 'bg-indigo-500'
-              } flex items-center justify-center font-semibold text-white flex-shrink-0 shadow-lg`}
+              } flex items-center justify-center font-semibold text-primary-app flex-shrink-0 shadow-lg`}
             >
               {activity.avatar}
             </div>
@@ -374,13 +374,13 @@ export function ActivityFeed({ compact = false, limit }: ActivityFeedProps) {
                 {formatActivityText(activity)}
               </p>
               <div className="flex items-center gap-2 mt-1">
-                <span className={`${compact ? 'text-xs' : 'text-sm'} text-slate-500`}>
+                <span className={`${compact ? 'text-xs' : 'text-sm'} text-muted-app`}>
                   {activity.timestamp}
                 </span>
                 {!compact && activity.actionType !== 'tucked' && activity.actionType !== 'doing' && (
                   <span className="text-xs text-slate-600">
                     {' | '}
-                    <span className="text-green-400/70">${activity.amountSaved} saved</span>
+                    <span className="text-green-600 dark:text-green-400/70">${activity.amountSaved} saved</span>
                   </span>
                 )}
               </div>
@@ -393,7 +393,7 @@ export function ActivityFeed({ compact = false, limit }: ActivityFeedProps) {
                 whileHover={{ opacity: 1 }}
                 className="opacity-0 group-hover:opacity-100 transition-opacity"
               >
-                <span className="text-xs text-slate-500 whitespace-nowrap">
+                <span className="text-xs text-muted-app whitespace-nowrap">
                   Nice choice!
                 </span>
               </motion.div>
@@ -414,7 +414,7 @@ export function ActivityFeed({ compact = false, limit }: ActivityFeedProps) {
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />
             <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500" />
           </span>
-          <span className="text-xs text-slate-500">Live updates from the JOFO community</span>
+          <span className="text-xs text-muted-app">Live updates from the JOFO community</span>
         </motion.div>
       )}
     </div>

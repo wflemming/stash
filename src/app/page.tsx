@@ -6,6 +6,7 @@ import { motion, useScroll, useTransform, useInView } from "framer-motion";
 import Link from "next/link";
 import { useRef, useState, useEffect } from "react";
 import { getTrendingActivities, type JomoActivity } from "@/data/jomo-activities";
+import { ThemeToggle } from "@/components/ThemeToggle";
 
 // Mock activity feed data - simulates real-time social proof
 const mockActivityFeed = [
@@ -76,14 +77,14 @@ function ActivityFeedItem({
       initial={{ opacity: 0, x: -20 }}
       animate={{ opacity: 1, x: 0 }}
       transition={{ delay: index * 0.1, duration: 0.4 }}
-      className="flex items-center gap-3 bg-slate-800/40 backdrop-blur-sm border border-slate-700/50 rounded-full px-4 py-2 whitespace-nowrap"
+      className="flex items-center gap-3 bg-slate-100/50 dark:bg-slate-800/40 backdrop-blur-sm border border-slate-200 dark:border-slate-700/50 rounded-full px-4 py-2 whitespace-nowrap"
     >
       <span className="text-lg">{item.emoji}</span>
       <span className="text-slate-300 text-sm">
-        <span className="text-white font-medium">{item.name}</span> chose{" "}
-        <span className="text-indigo-400">{item.activity}</span>
+        <span className="text-primary-app font-medium">{item.name}</span> chose{" "}
+        <span className="text-indigo-600 dark:text-indigo-400">{item.activity}</span>
       </span>
-      <span className="text-green-400 text-sm font-semibold">+${item.savings}</span>
+      <span className="text-green-600 dark:text-green-400 text-sm font-semibold">+${item.savings}</span>
     </motion.div>
   );
 }
@@ -122,9 +123,9 @@ function HowItWorksStep({
 
         {/* Content */}
         <div className="flex-1 text-center md:text-left">
-          <div className="text-indigo-400 text-sm font-medium mb-2">Step {index + 1}</div>
-          <h3 className="text-2xl font-bold text-white mb-2">{step.title}</h3>
-          <p className="text-slate-400 text-lg leading-relaxed">{step.description}</p>
+          <div className="text-indigo-600 dark:text-indigo-400 text-sm font-medium mb-2">Step {index + 1}</div>
+          <h3 className="text-2xl font-bold text-primary-app mb-2">{step.title}</h3>
+          <p className="text-secondary-app text-lg leading-relaxed">{step.description}</p>
         </div>
 
         {/* Visual */}
@@ -176,10 +177,10 @@ export default function Home() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ delay: 0.3 + i * 0.1 }}
-              className="bg-slate-800/50 border border-slate-700/50 rounded-xl p-3 text-center"
+              className="bg-slate-800/50 border border-slate-200 dark:border-slate-700/50 rounded-xl p-3 text-center"
             >
               <div className="text-2xl mb-1">{activity.emoji}</div>
-              <div className="text-xs text-slate-400 truncate">{activity.name}</div>
+              <div className="text-xs text-secondary-app truncate">{activity.name}</div>
             </motion.div>
           ))}
         </div>
@@ -190,10 +191,10 @@ export default function Home() {
       title: "Stash the night out",
       description: "That $127 bar tab? Skip it. That Uber surge + overpriced drinks combo? Hard pass. Your future self is watching.",
       visual: (
-        <div className="bg-slate-800/50 border border-slate-700/50 rounded-xl p-4">
+        <div className="bg-slate-800/50 border border-slate-200 dark:border-slate-700/50 rounded-xl p-4">
           <div className="flex items-center justify-between mb-3">
-            <div className="text-slate-500 text-xs">Tonight's stash</div>
-            <div className="text-green-400 text-sm font-semibold">+$127</div>
+            <div className="text-muted-app text-xs">Tonight's stash</div>
+            <div className="text-green-600 dark:text-green-400 text-sm font-semibold">+$127</div>
           </div>
           <div className="space-y-2">
             {[
@@ -211,7 +212,7 @@ export default function Home() {
                 transition={{ delay: 0.5 + i * 0.1 }}
                 className="flex justify-between text-xs"
               >
-                <span className="text-slate-500 line-through">{item.label}</span>
+                <span className="text-muted-app line-through">{item.label}</span>
                 <span className="text-slate-600 line-through">${item.amount}</span>
               </motion.div>
             ))}
@@ -224,10 +225,10 @@ export default function Home() {
       title: "Watch it compound",
       description: "That $127 becomes $274 in 10 years. Do it every Saturday? You're looking at $70K+ for Future You. Math is beautiful.",
       visual: (
-        <div className="bg-slate-800/50 border border-slate-700/50 rounded-xl p-4">
+        <div className="bg-slate-800/50 border border-slate-200 dark:border-slate-700/50 rounded-xl p-4">
           <div className="text-center mb-3">
-            <div className="text-slate-500 text-xs mb-1">10-year projection</div>
-            <div className="text-3xl font-bold text-green-400">$70,847</div>
+            <div className="text-muted-app text-xs mb-1">10-year projection</div>
+            <div className="text-3xl font-bold text-green-600 dark:text-green-400">$70,847</div>
           </div>
           <div className="h-16 flex items-end justify-between gap-1">
             {[12, 18, 25, 32, 41, 52, 64, 78, 94, 100].map((height, i) => (
@@ -258,7 +259,12 @@ export default function Home() {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 overflow-x-hidden">
+    <div className="min-h-screen app-bg overflow-x-hidden">
+      {/* Floating Theme Toggle */}
+      <div className="fixed top-4 right-4 z-50">
+        <ThemeToggle />
+      </div>
+
       {/* Hero Section */}
       <motion.section
         ref={heroRef}
@@ -305,7 +311,7 @@ export default function Home() {
                   transition={{ duration: 2, repeat: Infinity }}
                   className="w-2 h-2 bg-green-400 rounded-full"
                 />
-                <span className="text-green-400 text-sm font-medium">
+                <span className="text-green-600 dark:text-green-400 text-sm font-medium">
                   {liveCount.toLocaleString()} people staying in tonight
                 </span>
               </div>
@@ -318,7 +324,7 @@ export default function Home() {
               transition={{ delay: 0.3 }}
               className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-6"
             >
-              <span className="bg-gradient-to-r from-white via-indigo-200 to-purple-200 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-slate-900 via-indigo-600 to-purple-600 dark:from-white dark:via-indigo-200 dark:to-purple-200 bg-clip-text text-transparent">
                 JOFO
               </span>
             </motion.h1>
@@ -338,9 +344,9 @@ export default function Home() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5 }}
-              className="text-lg md:text-xl text-slate-500 mb-12 max-w-2xl"
+              className="text-lg md:text-xl text-muted-app mb-12 max-w-2xl"
             >
-              <span className="text-indigo-400 font-medium">Joy of Financing Out.</span>{" "}
+              <span className="text-indigo-600 dark:text-indigo-400 font-medium">Joy of Financing Out.</span>{" "}
               Turn every night in into a deposit for Future You.
               The social app that makes staying home feel like winning.
             </motion.p>
@@ -352,7 +358,7 @@ export default function Home() {
               transition={{ delay: 0.6 }}
               className="w-full max-w-lg mb-12"
             >
-              <div className="relative bg-slate-800/60 backdrop-blur-sm border border-slate-700 rounded-3xl p-8 overflow-hidden">
+              <div className="relative bg-slate-800/60 backdrop-blur-sm border border-slate-200 dark:border-slate-700 rounded-3xl p-8 overflow-hidden">
                 {/* Animated gradient border */}
                 <motion.div
                   animate={{ rotate: 360 }}
@@ -367,7 +373,7 @@ export default function Home() {
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ delay: 0.8 }}
-                        className="text-slate-500 text-xs uppercase tracking-wider mb-2"
+                        className="text-muted-app text-xs uppercase tracking-wider mb-2"
                       >
                         Tonight&apos;s sacrifice
                       </motion.div>
@@ -375,11 +381,11 @@ export default function Home() {
                         initial={{ scale: 0.5, opacity: 0 }}
                         animate={{ scale: 1, opacity: 1 }}
                         transition={{ delay: 0.9, type: "spring" }}
-                        className="text-4xl md:text-5xl font-bold text-white"
+                        className="text-4xl md:text-5xl font-bold text-primary-app"
                       >
                         $127
                       </motion.div>
-                      <div className="text-slate-400 text-sm mt-1">skipped</div>
+                      <div className="text-secondary-app text-sm mt-1">skipped</div>
                     </div>
 
                     <motion.div
@@ -391,7 +397,7 @@ export default function Home() {
                       <motion.div
                         animate={{ x: [0, 8, 0] }}
                         transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
-                        className="text-4xl text-indigo-400"
+                        className="text-4xl text-indigo-600 dark:text-indigo-400"
                       >
                         &rarr;
                       </motion.div>
@@ -403,7 +409,7 @@ export default function Home() {
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ delay: 1.2 }}
-                        className="text-slate-500 text-xs uppercase tracking-wider mb-2"
+                        className="text-muted-app text-xs uppercase tracking-wider mb-2"
                       >
                         Future You gets
                       </motion.div>
@@ -411,11 +417,11 @@ export default function Home() {
                         initial={{ scale: 0.5, opacity: 0 }}
                         animate={{ scale: 1, opacity: 1 }}
                         transition={{ delay: 1.3, type: "spring" }}
-                        className="text-4xl md:text-5xl font-bold text-green-400"
+                        className="text-4xl md:text-5xl font-bold text-green-600 dark:text-green-400"
                       >
                         $274
                       </motion.div>
-                      <div className="text-green-400/60 text-sm mt-1">+116% gain</div>
+                      <div className="text-green-600 dark:text-green-400/60 text-sm mt-1">+116% gain</div>
                     </div>
                   </div>
 
@@ -436,7 +442,7 @@ export default function Home() {
                     transition={{ delay: 1.6 }}
                     className="mt-4 text-center"
                   >
-                    <span className="text-slate-500 text-sm">
+                    <span className="text-muted-app text-sm">
                       8% average market return, compounded annually
                     </span>
                   </motion.div>
@@ -454,7 +460,7 @@ export default function Home() {
               <Link href="/tonight">
                 <Button
                   size="lg"
-                  className="bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white px-10 py-7 text-lg rounded-full shadow-lg shadow-indigo-500/25 transition-all hover:shadow-xl hover:shadow-indigo-500/30"
+                  className="bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-primary-app px-10 py-7 text-lg rounded-full shadow-lg shadow-indigo-500/25 transition-all hover:shadow-xl hover:shadow-indigo-500/30"
                 >
                   Start Stacking Tonight
                 </Button>
@@ -482,7 +488,7 @@ export default function Home() {
           <motion.div
             animate={{ y: [0, 8, 0] }}
             transition={{ repeat: Infinity, duration: 2 }}
-            className="flex flex-col items-center text-slate-500"
+            className="flex flex-col items-center text-muted-app"
           >
             <span className="text-sm mb-2">Scroll to explore</span>
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -493,10 +499,10 @@ export default function Home() {
       </motion.section>
 
       {/* Social Proof Strip - Live Activity Feed */}
-      <section className="py-8 border-y border-slate-800/50 bg-slate-900/50 backdrop-blur-sm overflow-hidden">
+      <section className="py-8 border-y border-slate-200/50 dark:border-slate-800/50 bg-slate-900/50 backdrop-blur-sm overflow-hidden">
         <div className="container mx-auto px-6">
           <div className="text-center mb-6">
-            <span className="text-slate-500 text-sm uppercase tracking-wider">Live Activity</span>
+            <span className="text-muted-app text-sm uppercase tracking-wider">Live Activity</span>
           </div>
 
           {/* Scrolling feed */}
@@ -528,11 +534,11 @@ export default function Home() {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <span className="text-indigo-400 text-sm uppercase tracking-wider font-medium">How it works</span>
-            <h2 className="text-4xl md:text-5xl font-bold text-white mt-4 mb-4">
+            <span className="text-indigo-600 dark:text-indigo-400 text-sm uppercase tracking-wider font-medium">How it works</span>
+            <h2 className="text-4xl md:text-5xl font-bold text-primary-app mt-4 mb-4">
               Three steps to a richer future
             </h2>
-            <p className="text-slate-400 text-lg max-w-2xl mx-auto">
+            <p className="text-secondary-app text-lg max-w-2xl mx-auto">
               JOFO turns FOMO into JOMO (Joy of Missing Out) by making every night in count toward your financial goals.
             </p>
           </motion.div>
@@ -574,11 +580,11 @@ export default function Home() {
             viewport={{ once: true }}
             className="text-center mb-12"
           >
-            <span className="text-indigo-400 text-sm uppercase tracking-wider font-medium">Tonight&apos;s vibes</span>
-            <h2 className="text-4xl md:text-5xl font-bold text-white mt-4 mb-4">
+            <span className="text-indigo-600 dark:text-indigo-400 text-sm uppercase tracking-wider font-medium">Tonight&apos;s vibes</span>
+            <h2 className="text-4xl md:text-5xl font-bold text-primary-app mt-4 mb-4">
               What are people doing tonight?
             </h2>
-            <p className="text-slate-400 text-lg">
+            <p className="text-secondary-app text-lg">
               Real people, real savings, real cozy vibes
             </p>
           </motion.div>
@@ -593,28 +599,28 @@ export default function Home() {
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
               >
-                <Card className="bg-slate-800/30 border-slate-700/50 hover:border-indigo-500/30 transition-all hover:bg-slate-800/50">
+                <Card className="bg-slate-100/50 dark:bg-slate-800/30 border-slate-200 dark:border-slate-700/50 hover:border-indigo-500/30 transition-all hover:bg-slate-800/50">
                   <CardContent className="p-6">
                     <div className="flex items-start justify-between mb-4">
                       <div className="flex items-center gap-3">
-                        <div className="w-10 h-10 rounded-full bg-gradient-to-br from-indigo-500 to-purple-500 flex items-center justify-center text-white font-medium">
+                        <div className="w-10 h-10 rounded-full bg-gradient-to-br from-indigo-500 to-purple-500 flex items-center justify-center text-primary-app font-medium">
                           {item.name.charAt(0)}
                         </div>
                         <div>
-                          <div className="text-white font-medium">{item.name}</div>
-                          <div className="text-slate-500 text-sm">{item.timeAgo}</div>
+                          <div className="text-primary-app font-medium">{item.name}</div>
+                          <div className="text-muted-app text-sm">{item.timeAgo}</div>
                         </div>
                       </div>
                       <span className="text-3xl">{item.emoji}</span>
                     </div>
 
                     <p className="text-slate-300 mb-4">
-                      Chose <span className="text-indigo-400 font-medium">{item.activity}</span> over going out tonight
+                      Chose <span className="text-indigo-600 dark:text-indigo-400 font-medium">{item.activity}</span> over going out tonight
                     </p>
 
-                    <div className="flex items-center justify-between pt-4 border-t border-slate-700/50">
-                      <div className="text-slate-500 text-sm">Saved for Future Me</div>
-                      <div className="text-green-400 font-bold text-lg">${item.savings}</div>
+                    <div className="flex items-center justify-between pt-4 border-t border-slate-200 dark:border-slate-700/50">
+                      <div className="text-muted-app text-sm">Saved for Future Me</div>
+                      <div className="text-green-600 dark:text-green-400 font-bold text-lg">${item.savings}</div>
                     </div>
                   </CardContent>
                 </Card>
@@ -630,7 +636,7 @@ export default function Home() {
             className="text-center mt-10"
           >
             <Link href="/tonight">
-              <Button variant="ghost" className="text-indigo-400 hover:text-indigo-300">
+              <Button variant="ghost" className="text-indigo-600 dark:text-indigo-400 hover:text-indigo-300">
                 Browse all 40+ activities &rarr;
               </Button>
             </Link>
@@ -647,8 +653,8 @@ export default function Home() {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <span className="text-green-400 text-sm uppercase tracking-wider font-medium">The numbers</span>
-            <h2 className="text-4xl md:text-5xl font-bold text-white mt-4">
+            <span className="text-green-600 dark:text-green-400 text-sm uppercase tracking-wider font-medium">The numbers</span>
+            <h2 className="text-4xl md:text-5xl font-bold text-primary-app mt-4">
               JOFO by the numbers
             </h2>
           </motion.div>
@@ -663,7 +669,7 @@ export default function Home() {
                 transition={{ delay: index * 0.1 }}
                 className="text-center"
               >
-                <div className="text-4xl md:text-5xl font-bold text-green-400 mb-2">
+                <div className="text-4xl md:text-5xl font-bold text-green-600 dark:text-green-400 mb-2">
                   <AnimatedCounter
                     from={0}
                     to={stat.value}
@@ -672,7 +678,7 @@ export default function Home() {
                     delay={0.5 + index * 0.2}
                   />
                 </div>
-                <div className="text-slate-400">{stat.label}</div>
+                <div className="text-secondary-app">{stat.label}</div>
               </motion.div>
             ))}
           </div>
@@ -684,18 +690,18 @@ export default function Home() {
             viewport={{ once: true }}
             className="mt-16 max-w-2xl mx-auto"
           >
-            <div className="bg-gradient-to-br from-slate-800/80 to-slate-900/80 border border-slate-700/50 rounded-3xl p-8 md:p-12 text-center">
-              <div className="text-slate-400 mb-4">Average JOFO user saves</div>
+            <div className="bg-gradient-to-br from-slate-800/80 to-slate-900/80 border border-slate-200 dark:border-slate-700/50 rounded-3xl p-8 md:p-12 text-center">
+              <div className="text-secondary-app mb-4">Average JOFO user saves</div>
               <div className="text-6xl md:text-7xl font-bold mb-4">
                 <span className="bg-gradient-to-r from-green-400 to-emerald-400 bg-clip-text text-transparent">
                   <AnimatedCounter from={0} to={847} prefix="$" delay={0.8} />
                 </span>
               </div>
-              <div className="text-slate-400 text-lg">per month for their future self</div>
-              <div className="mt-6 pt-6 border-t border-slate-700/50">
-                <div className="text-slate-500 text-sm">
-                  That&apos;s <span className="text-indigo-400 font-medium">$10,164/year</span> or{" "}
-                  <span className="text-green-400 font-medium">$219,847 in 10 years</span> at 8% returns
+              <div className="text-secondary-app text-lg">per month for their future self</div>
+              <div className="mt-6 pt-6 border-t border-slate-200 dark:border-slate-700/50">
+                <div className="text-muted-app text-sm">
+                  That&apos;s <span className="text-indigo-600 dark:text-indigo-400 font-medium">$10,164/year</span> or{" "}
+                  <span className="text-green-600 dark:text-green-400 font-medium">$219,847 in 10 years</span> at 8% returns
                 </div>
               </div>
             </div>
@@ -734,7 +740,7 @@ export default function Home() {
               &#127881;
             </motion.div>
 
-            <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">
+            <h2 className="text-4xl md:text-6xl font-bold text-primary-app mb-6">
               Ready to meet your{" "}
               <span className="bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">
                 Future You
@@ -742,7 +748,7 @@ export default function Home() {
               ?
             </h2>
 
-            <p className="text-xl text-slate-400 mb-10 max-w-xl mx-auto">
+            <p className="text-xl text-secondary-app mb-10 max-w-xl mx-auto">
               Every night in is a deposit. Every stash is an investment.
               Start building your future tonight.
             </p>
@@ -751,7 +757,7 @@ export default function Home() {
               <Link href="/tonight">
                 <Button
                   size="lg"
-                  className="bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white px-12 py-8 text-xl rounded-full shadow-lg shadow-indigo-500/25 transition-all hover:shadow-xl hover:shadow-indigo-500/30 hover:scale-105"
+                  className="bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-primary-app px-12 py-8 text-xl rounded-full shadow-lg shadow-indigo-500/25 transition-all hover:shadow-xl hover:shadow-indigo-500/30 hover:scale-105"
                 >
                   What&apos;s Tonight?
                 </Button>
@@ -764,22 +770,22 @@ export default function Home() {
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               transition={{ delay: 0.5 }}
-              className="mt-12 flex flex-wrap justify-center gap-6 text-slate-500 text-sm"
+              className="mt-12 flex flex-wrap justify-center gap-6 text-muted-app text-sm"
             >
               <div className="flex items-center gap-2">
-                <svg className="w-5 h-5 text-green-400" fill="currentColor" viewBox="0 0 20 20">
+                <svg className="w-5 h-5 text-green-600 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                 </svg>
                 <span>No credit card required</span>
               </div>
               <div className="flex items-center gap-2">
-                <svg className="w-5 h-5 text-green-400" fill="currentColor" viewBox="0 0 20 20">
+                <svg className="w-5 h-5 text-green-600 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                 </svg>
                 <span>2-minute setup</span>
               </div>
               <div className="flex items-center gap-2">
-                <svg className="w-5 h-5 text-green-400" fill="currentColor" viewBox="0 0 20 20">
+                <svg className="w-5 h-5 text-green-600 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                 </svg>
                 <span>Free forever</span>
@@ -794,13 +800,13 @@ export default function Home() {
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
-        className="py-12 text-center border-t border-slate-800/50"
+        className="py-12 text-center border-t border-slate-200/50 dark:border-slate-800/50"
       >
         <div className="inline-flex flex-wrap justify-center gap-2">
           {["Next.js 16", "React 19", "TypeScript", "Tailwind", "Framer Motion"].map((tech) => (
             <span
               key={tech}
-              className="px-3 py-1 bg-slate-800/50 border border-slate-700/50 rounded-full text-xs text-slate-400"
+              className="px-3 py-1 bg-slate-800/50 border border-slate-200 dark:border-slate-700/50 rounded-full text-xs text-secondary-app"
             >
               {tech}
             </span>
@@ -809,10 +815,10 @@ export default function Home() {
       </motion.div>
 
       {/* Footer */}
-      <footer className="container mx-auto px-6 py-8 text-center border-t border-slate-800/50">
-        <p className="text-slate-500 text-sm">
+      <footer className="container mx-auto px-6 py-8 text-center border-t border-slate-200/50 dark:border-slate-800/50">
+        <p className="text-muted-app text-sm">
           Built by{" "}
-          <a href="https://wheelerflemming.com" className="text-indigo-400 hover:text-indigo-300 transition-colors">
+          <a href="https://wheelerflemming.com" className="text-indigo-600 dark:text-indigo-400 hover:text-indigo-300 transition-colors">
             Wheeler Flemming
           </a>
           {" "}with Claude AI

@@ -53,4 +53,51 @@ src/
 - `calculateRecurringFutureValue()` - weekly contribution growth
 - `generateProjectionData()` - chart data points over N years
 
-**Dark Theme**: App uses dark mode by default (`className="dark"` on html element)
+**Theme Support**: App supports both light and dark modes via ThemeProvider context
+
+## Design System - Light/Dark Mode
+
+**CRITICAL: All new components must support both light and dark themes.** Use the following patterns:
+
+### Theme-Aware CSS Classes (defined in globals.css)
+
+| Class | Purpose |
+|-------|---------|
+| `app-bg` | Page backgrounds (gradient from slate-50/950) |
+| `app-card` | Card backgrounds with borders |
+| `app-card-secondary` | Secondary card backgrounds |
+| `app-subtle` | Subtle background highlights |
+| `app-header` | Header/nav backgrounds |
+| `text-primary-app` | Primary text (slate-900/white) |
+| `text-secondary-app` | Secondary text (slate-600/slate-400) |
+| `text-muted-app` | Muted/subtle text (slate-500) |
+
+### Color Patterns
+
+**Always use `dark:` variants for theme-aware colors:**
+```tsx
+// Good - supports both themes
+className="text-green-600 dark:text-green-400"
+className="bg-slate-100/50 dark:bg-slate-800/50"
+className="border-slate-200 dark:border-slate-700"
+
+// Bad - only works in dark mode
+className="text-green-400"
+className="bg-slate-800/50"
+```
+
+### Gradient Text
+```tsx
+// Theme-aware gradient for headings
+className="bg-gradient-to-r from-slate-900 via-indigo-600 to-purple-600 dark:from-white dark:via-indigo-200 dark:to-purple-200 bg-clip-text text-transparent"
+```
+
+### Components
+
+- **ThemeProvider** (`@/components/ThemeProvider`): Wraps app, provides `useTheme()` hook
+- **ThemeToggle** (`@/components/ThemeToggle`): Cycles through light/dark/system modes
+
+### Key Files
+- `src/app/globals.css`: Theme CSS variables and utility classes
+- `src/components/ThemeProvider.tsx`: Theme context and persistence
+- `src/components/ThemeToggle.tsx`: UI for switching themes

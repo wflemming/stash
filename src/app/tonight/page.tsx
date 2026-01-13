@@ -8,6 +8,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { jomoActivities, getTrendingActivities, type JomoActivity } from '@/data/jomo-activities';
 import { mockFutureYouAccount, getTodaysInsight, getCurrentDayOfWeek } from '@/data/mock-accounts';
 import { calculateFutureValue, formatCurrency } from '@/lib/projections';
+import { ThemeToggle } from '@/components/ThemeToggle';
 
 export default function TonightPage() {
   const [currentActivity, setCurrentActivity] = useState<JomoActivity | null>(null);
@@ -35,18 +36,21 @@ export default function TonightPage() {
     : 0;
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950">
+    <div className="min-h-screen app-bg">
       {/* Header */}
       <header className="container mx-auto px-6 py-6">
         <nav className="flex items-center justify-between">
-          <Link href="/" className="text-xl font-bold text-white">
+          <Link href="/" className="text-xl font-bold bg-gradient-to-r from-slate-900 via-indigo-600 to-purple-600 dark:from-white dark:via-indigo-200 dark:to-purple-200 bg-clip-text text-transparent">
             JOFO
           </Link>
-          <Link href="/dashboard">
-            <Button variant="ghost" className="text-slate-400 hover:text-white">
-              Dashboard
-            </Button>
-          </Link>
+          <div className="flex items-center gap-2">
+            <ThemeToggle />
+            <Link href="/dashboard">
+              <Button variant="ghost" className="text-secondary-app hover:text-primary-app">
+                Dashboard
+              </Button>
+            </Link>
+          </div>
         </nav>
       </header>
 
@@ -64,21 +68,21 @@ export default function TonightPage() {
             transition={{ delay: 0.2 }}
             className="inline-block mb-6 px-4 py-2 bg-indigo-500/10 border border-indigo-500/20 rounded-full"
           >
-            <span className="text-indigo-400 text-sm font-medium">
+            <span className="text-indigo-600 dark:text-indigo-400 text-sm font-medium">
               {dayOfWeek} Night Vibes
             </span>
           </motion.div>
 
           <h1 className="text-4xl md:text-5xl font-bold mb-4">
-            <span className="bg-gradient-to-r from-white via-indigo-200 to-purple-200 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-slate-900 via-indigo-600 to-purple-600 dark:from-white dark:via-indigo-200 dark:to-purple-200 bg-clip-text text-transparent">
               What&apos;s your vibe tonight?
             </span>
           </h1>
-          <p className="text-slate-400 text-lg">
+          <p className="text-secondary-app text-lg">
             Your{' '}
-            <span className="text-indigo-400 font-semibold">Future You</span>
+            <span className="text-indigo-600 dark:text-indigo-600 dark:text-indigo-400 font-semibold">Future You</span>
             {' '}balance:{' '}
-            <span className="text-green-400 font-semibold">
+            <span className="text-green-600 dark:text-green-600 dark:text-green-400 font-semibold">
               {formatCurrency(mockFutureYouAccount.balance)}
             </span>
           </p>
@@ -92,7 +96,7 @@ export default function TonightPage() {
           className="max-w-xl mx-auto mb-8"
         >
           <div className="text-center mb-4">
-            <span className="text-slate-500 text-sm uppercase tracking-wider">
+            <span className="text-muted-app text-sm uppercase tracking-wider">
               Tonight&apos;s Pick
             </span>
           </div>
@@ -106,7 +110,7 @@ export default function TonightPage() {
                 exit={{ opacity: 0, scale: 0.95, rotateY: 10 }}
                 transition={{ duration: 0.3 }}
               >
-                <Card className="bg-slate-800/50 border-slate-700 overflow-hidden">
+                <Card className="app-card border overflow-hidden">
                   <CardContent className="p-8 text-center">
                     <motion.div
                       animate={{
@@ -118,25 +122,25 @@ export default function TonightPage() {
                     >
                       {currentActivity.emoji}
                     </motion.div>
-                    <h2 className="text-2xl font-bold text-white mb-2">
+                    <h2 className="text-2xl font-bold text-primary-app mb-2">
                       {currentActivity.name}
                     </h2>
-                    <p className="text-slate-400 mb-6">
+                    <p className="text-secondary-app mb-6">
                       {currentActivity.description}
                     </p>
 
                     <div className="flex justify-center gap-6 mb-4">
                       <div className="text-center">
-                        <div className="text-green-400 text-2xl font-bold">
+                        <div className="text-green-600 dark:text-green-400 text-2xl font-bold">
                           {formatCurrency(currentActivity.estimatedSavings)}
                         </div>
-                        <div className="text-slate-500 text-sm">saved tonight</div>
+                        <div className="text-muted-app text-sm">saved tonight</div>
                       </div>
                       <div className="text-center">
-                        <div className="text-indigo-400 text-2xl font-bold capitalize">
+                        <div className="text-indigo-600 dark:text-indigo-400 text-2xl font-bold capitalize">
                           {currentActivity.vibeCategory}
                         </div>
-                        <div className="text-slate-500 text-sm">vibe category</div>
+                        <div className="text-muted-app text-sm">vibe category</div>
                       </div>
                     </div>
                   </CardContent>
@@ -156,7 +160,7 @@ export default function TonightPage() {
               variant="ghost"
               onClick={shuffleActivity}
               disabled={isShuffling}
-              className="text-slate-400 hover:text-white"
+              className="text-secondary-app hover:text-primary-app"
             >
               <motion.span
                 animate={{ rotate: isShuffling ? 360 : 0 }}
@@ -182,20 +186,20 @@ export default function TonightPage() {
               <div className="flex items-start gap-4">
                 <div className="text-3xl">🤖</div>
                 <div className="flex-1">
-                  <div className="text-indigo-400 text-sm font-medium mb-2">
+                  <div className="text-indigo-600 dark:text-indigo-400 text-sm font-medium mb-2">
                     Based on your spending patterns...
                   </div>
                   <p className="text-slate-300 mb-3">
-                    You typically spend ~<span className="text-white font-semibold">${insight.averageSpending}</span> on {dayOfWeek} nights
+                    You typically spend ~<span className="text-primary-app font-semibold">${insight.averageSpending}</span> on {dayOfWeek} nights
                   </p>
-                  <div className="bg-slate-900/50 rounded-lg p-4 border border-slate-700">
-                    <p className="text-slate-400 text-sm">
-                      Stay in tonight and <span className="text-indigo-400">Future You</span> gets
+                  <div className="app-subtle rounded-lg p-4 border border-slate-700">
+                    <p className="text-secondary-app text-sm">
+                      Stay in tonight and <span className="text-indigo-600 dark:text-indigo-400">Future You</span> gets
                     </p>
-                    <p className="text-green-400 text-2xl font-bold">
+                    <p className="text-green-600 dark:text-green-400 text-2xl font-bold">
                       {formatCurrency(projectedValue)} in 10 years
                     </p>
-                    <p className="text-slate-500 text-xs mt-1">
+                    <p className="text-muted-app text-xs mt-1">
                       From just {currentActivity ? formatCurrency(currentActivity.estimatedSavings) : '$0'} saved tonight
                     </p>
                   </div>
@@ -216,7 +220,7 @@ export default function TonightPage() {
             <Link href="/pledge">
               <Button
                 size="lg"
-                className="w-full sm:w-auto bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white px-8 py-6 text-lg rounded-full shadow-lg shadow-indigo-500/25"
+                className="w-full sm:w-auto bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-primary-app px-8 py-6 text-lg rounded-full shadow-lg shadow-indigo-500/25"
               >
                 <span className="mr-2">💰</span>
                 Pay Future You
@@ -226,7 +230,7 @@ export default function TonightPage() {
               <Button
                 size="lg"
                 variant="outline"
-                className="w-full sm:w-auto border-green-500/50 text-green-400 hover:bg-green-500/10 px-8 py-6 text-lg rounded-full"
+                className="w-full sm:w-auto border-green-500/50 text-green-600 dark:text-green-400 hover:bg-green-500/10 px-8 py-6 text-lg rounded-full"
               >
                 <span className="mr-2">🎁</span>
                 Treat Your Future Self
@@ -242,10 +246,10 @@ export default function TonightPage() {
           transition={{ delay: 0.7 }}
         >
           <div className="text-center mb-6">
-            <h3 className="text-xl font-semibold text-white mb-2">
+            <h3 className="text-xl font-semibold text-primary-app mb-2">
               🔥 Trending Tonight
             </h3>
-            <p className="text-slate-500 text-sm">
+            <p className="text-muted-app text-sm">
               What other homebodies are doing
             </p>
           </div>
@@ -261,13 +265,13 @@ export default function TonightPage() {
                   onClick={() => setCurrentActivity(activity)}
                   className="cursor-pointer"
                 >
-                  <Card className="w-48 bg-slate-800/30 border-slate-700 hover:border-indigo-500/50 transition-all hover:scale-105">
+                  <Card className="w-48 app-card-secondary border hover:border-indigo-500/50 transition-all hover:scale-105">
                     <CardContent className="p-4 text-center">
                       <div className="text-3xl mb-2">{activity.emoji}</div>
-                      <div className="text-white font-medium text-sm mb-1 truncate">
+                      <div className="text-primary-app font-medium text-sm mb-1 truncate">
                         {activity.name}
                       </div>
-                      <div className="text-green-400 text-sm font-semibold">
+                      <div className="text-green-600 dark:text-green-400 text-sm font-semibold">
                         Save {formatCurrency(activity.estimatedSavings)}
                       </div>
                     </CardContent>
@@ -287,8 +291,8 @@ export default function TonightPage() {
         >
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-slate-800/50 border border-slate-700 rounded-full">
             <span className="text-orange-400">🔥</span>
-            <span className="text-slate-400 text-sm">
-              You&apos;re on a <span className="text-white font-semibold">{mockFutureYouAccount.streakDays}-day</span> streak!
+            <span className="text-secondary-app text-sm">
+              You&apos;re on a <span className="text-primary-app font-semibold">{mockFutureYouAccount.streakDays}-day</span> streak!
             </span>
           </div>
         </motion.div>
