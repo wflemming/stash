@@ -11,7 +11,7 @@ import { formatCurrency, calculateFutureValue } from "@/lib/projections";
 import { mockSpendingPatterns } from "@/data/mock-transactions";
 import Link from "next/link";
 
-function PledgeContent() {
+function StashContent() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const patternId = searchParams.get('pattern') || 'saturday-night';
@@ -23,17 +23,17 @@ function PledgeContent() {
 
   const futureValue = Math.round(calculateFutureValue(amount, 0.08, 10));
 
-  const handlePledge = () => {
-    // Save pledge to localStorage
-    const existingPledges = JSON.parse(localStorage.getItem('pledges') || '[]');
-    const newPledge = {
+  const handleStash = () => {
+    // Save stash to localStorage
+    const existingStashes = JSON.parse(localStorage.getItem('stashes') || '[]');
+    const newStash = {
       id: Date.now().toString(),
       amount,
       category: pattern.name,
       date: new Date().toISOString().split('T')[0],
       futureValue,
     };
-    localStorage.setItem('pledges', JSON.stringify([...existingPledges, newPledge]));
+    localStorage.setItem('stashes', JSON.stringify([...existingStashes, newStash]));
 
     setShowSuccess(true);
   };
@@ -62,10 +62,10 @@ function PledgeContent() {
             <div className="text-center mb-8">
               <div className="text-5xl mb-4">{pattern.emoji}</div>
               <h2 className="text-2xl font-bold text-white mb-2">
-                Make a Pledge
+                Stash It
               </h2>
               <p className="text-slate-400">
-                {pattern.pledgeSuggestion}
+                {pattern.stashSuggestion}
               </p>
             </div>
 
@@ -76,7 +76,7 @@ function PledgeContent() {
                   {formatCurrency(amount)}
                 </div>
                 <div className="text-slate-400">
-                  pledge amount
+                  stash amount
                 </div>
               </div>
 
@@ -122,12 +122,12 @@ function PledgeContent() {
               <p className="text-slate-400 text-sm mt-2">in 10 years at 8% avg return</p>
             </motion.div>
 
-            {/* Pledge Button */}
+            {/* Stash Button */}
             <Button
-              onClick={handlePledge}
+              onClick={handleStash}
               className="w-full bg-indigo-600 hover:bg-indigo-700 py-6 text-lg"
             >
-              I Pledge to Future You
+              Stash It for Future Me
             </Button>
           </Card>
         </motion.div>
@@ -135,7 +135,7 @@ function PledgeContent() {
         {/* Success Dialog */}
         <Dialog open={showSuccess} onOpenChange={setShowSuccess}>
           <DialogContent className="bg-slate-800 border-slate-700 text-center p-8">
-            <DialogTitle className="sr-only">Pledge Success</DialogTitle>
+            <DialogTitle className="sr-only">Stash Success</DialogTitle>
             <AnimatePresence>
               {showSuccess && (
                 <motion.div
@@ -191,14 +191,14 @@ function PledgeContent() {
   );
 }
 
-export default function PledgePage() {
+export default function StashPage() {
   return (
     <Suspense fallback={
       <div className="min-h-screen bg-slate-950 flex items-center justify-center">
         <div className="text-slate-400">Loading...</div>
       </div>
     }>
-      <PledgeContent />
+      <StashContent />
     </Suspense>
   );
 }

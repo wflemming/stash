@@ -124,7 +124,7 @@ export const mockSpendingPatterns = [
     confidence: 0.92,
     topMerchants: ['THE TIPSY CROW', 'UBER TRIP', 'MCSORLEYS ALE HOUSE'],
     insight: 'You typically spend around $147 on Saturday nights between 8 PM and 2 AM.',
-    pledgeSuggestion: 'Skip one Saturday night out and invest in Future You instead.',
+    stashSuggestion: 'Skip one Saturday night out and invest in Future You instead.',
   },
   {
     id: 'food-delivery',
@@ -135,7 +135,7 @@ export const mockSpendingPatterns = [
     confidence: 0.85,
     topMerchants: ['DOORDASH', 'UBER EATS', 'GRUBHUB'],
     insight: 'You order delivery about 3 times per week, averaging $30 per order.',
-    pledgeSuggestion: 'Cook one meal instead of ordering and watch your savings grow.',
+    stashSuggestion: 'Cook one meal instead of ordering and watch your savings grow.',
   },
   {
     id: 'subscriptions',
@@ -146,7 +146,7 @@ export const mockSpendingPatterns = [
     confidence: 0.99,
     topMerchants: ['NETFLIX', 'SPOTIFY', 'HULU'],
     insight: 'Your streaming subscriptions total about $45 per month.',
-    pledgeSuggestion: 'Cancel one service you rarely use.',
+    stashSuggestion: 'Cancel one service you rarely use.',
   },
 ];
 

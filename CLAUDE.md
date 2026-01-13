@@ -13,7 +13,7 @@ npm start        # Start production server
 
 ## Architecture
 
-**JOFO** (Joy of Financing Out) is a Next.js 16 fintech app that turns staying in into compound growth. Users skip the night out, pledge the savings to "Future You", and watch compound interest work its magic. "Stash" is used as the action verb within the app.
+**JOFO** (Joy of Financing Out) is a Next.js 16 fintech app that turns staying in into compound growth. Users skip the night out, stash the savings for "Future You", and watch compound interest work its magic. "Stash" is the action verb used throughout the app (not "pledge").
 
 ### Tech Stack
 - Next.js 16 with App Router (React 19)
@@ -30,8 +30,8 @@ src/
 ├── app/                    # Next.js App Router pages
 │   ├── page.tsx           # Landing page
 │   ├── onboarding/        # Multi-step onboarding flow (email → connect → analyze → insights)
-│   ├── pledge/            # Pledge creation with amount slider and future value preview
-│   └── dashboard/         # Main dashboard with projection chart and pledge history
+│   ├── pledge/            # Stash creation with amount slider and future value preview (route kept as /pledge for URL simplicity)
+│   └── dashboard/         # Main dashboard with projection chart and stash history
 ├── components/ui/         # Radix-based UI primitives (button, card, input, slider, dialog)
 ├── lib/
 │   ├── utils.ts           # cn() helper for Tailwind class merging
@@ -46,7 +46,7 @@ src/
 
 **Client Components**: Pages using hooks or browser APIs are marked `'use client'`
 
-**Data Persistence**: Pledges stored in localStorage (no backend currently)
+**Data Persistence**: Stashes stored in localStorage key `stashes` (no backend currently)
 
 **Financial Projections**: `src/lib/projections.ts` provides compound interest calculations:
 - `calculateFutureValue()` - one-time investment growth

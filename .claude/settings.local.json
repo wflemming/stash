@@ -8,7 +8,9 @@
       "Bash(git add:*)",
       "Bash(git commit -m \"$\\(cat <<''EOF''\nRebrand to JOFO - Joy of Financing Out\n\n- New brand identity: JOFO replaces Stash as the app name\n- \"Stash\" retained as action verb within the app\n- Added /tonight page with 40+ JOMO activities and AI spending insights\n- Added /transfer page with animated money flow simulation\n- Added compound growth visualizations with Recharts\n- New landing page: \"Sacrifice tonight. Stack tomorrow.\"\n- Fixed DialogTitle accessibility for screen readers\n- Rebranded \"FU-ME\" to \"Future You\" throughout\n\nTech: Next.js 16, React 19, TypeScript, Tailwind CSS, Framer Motion\n\nCo-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>\nEOF\n\\)\")",
       "Bash(git push)",
-      "Bash(git commit:*)"
+      "Bash(git commit:*)",
+      "Bash(dig:*)",
+      "WebFetch(domain:jomo.so)"
     ]
   }
 }

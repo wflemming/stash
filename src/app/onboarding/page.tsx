@@ -198,7 +198,7 @@ export default function Onboarding() {
                   onClick={handleContinue}
                   className="w-full bg-indigo-600 hover:bg-indigo-700"
                 >
-                  Make Your First Pledge
+                  Make Your First Stash
                 </Button>
               </Card>
             </motion.div>
