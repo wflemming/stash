@@ -3,7 +3,7 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Slider } from "@/components/ui/slider";
-import { Dialog, DialogContent } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
@@ -127,7 +127,7 @@ function PledgeContent() {
               onClick={handlePledge}
               className="w-full bg-indigo-600 hover:bg-indigo-700 py-6 text-lg"
             >
-              I Pledge to Future Me
+              I Pledge to Future You
             </Button>
           </Card>
         </motion.div>
@@ -135,6 +135,7 @@ function PledgeContent() {
         {/* Success Dialog */}
         <Dialog open={showSuccess} onOpenChange={setShowSuccess}>
           <DialogContent className="bg-slate-800 border-slate-700 text-center p-8">
+            <DialogTitle className="sr-only">Pledge Success</DialogTitle>
             <AnimatePresence>
               {showSuccess && (
                 <motion.div

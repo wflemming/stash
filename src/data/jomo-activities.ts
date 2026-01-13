@@ -1,0 +1,398 @@
+export interface JomoActivity {
+  id: string;
+  name: string;
+  emoji: string;
+  description: string;
+  estimatedSavings: number;
+  vibeCategory: 'cozy' | 'creative' | 'social' | 'self-care' | 'adventure' | 'learning';
+  trending: boolean;
+}
+
+export const jomoActivities: JomoActivity[] = [
+  // Cozy vibes
+  {
+    id: 'movie-marathon',
+    name: 'Movie Marathon',
+    emoji: '🎬',
+    description: 'Pick a trilogy, make some popcorn, and become one with your couch. No pants required.',
+    estimatedSavings: 85,
+    vibeCategory: 'cozy',
+    trending: true,
+  },
+  {
+    id: 'blanket-burrito',
+    name: 'Blanket Burrito Reading',
+    emoji: '📚',
+    description: 'Wrap yourself up like a cozy burrito and finally read that book everyone keeps talking about.',
+    estimatedSavings: 75,
+    vibeCategory: 'cozy',
+    trending: false,
+  },
+  {
+    id: 'comfort-cooking',
+    name: 'Comfort Food Night',
+    emoji: '🍝',
+    description: "Make your grandma's famous recipe (or attempt to). The kitchen is your kingdom tonight.",
+    estimatedSavings: 95,
+    vibeCategory: 'cozy',
+    trending: false,
+  },
+  {
+    id: 'puzzle-time',
+    name: 'Puzzle & Chill',
+    emoji: '🧩',
+    description: "There's something oddly satisfying about a 1000-piece puzzle and a good playlist.",
+    estimatedSavings: 60,
+    vibeCategory: 'cozy',
+    trending: false,
+  },
+  {
+    id: 'tea-ceremony',
+    name: 'Fancy Tea Time',
+    emoji: '🫖',
+    description: "Brew some fancy tea, put on a British accent, and pretend you're in a period drama.",
+    estimatedSavings: 55,
+    vibeCategory: 'cozy',
+    trending: false,
+  },
+  {
+    id: 'vinyl-vibes',
+    name: 'Vinyl & Vibes',
+    emoji: '🎵',
+    description: "Dust off those records (or queue up lo-fi beats) and just... exist. That's it. That's the activity.",
+    estimatedSavings: 70,
+    vibeCategory: 'cozy',
+    trending: true,
+  },
+  {
+    id: 'rainy-day-sim',
+    name: 'Rainy Day Simulator',
+    emoji: '🌧️',
+    description: "Play rain sounds, light candles, and pretend the outside world doesn't exist. Peak introvert energy.",
+    estimatedSavings: 65,
+    vibeCategory: 'cozy',
+    trending: false,
+  },
+
+  // Creative vibes
+  {
+    id: 'cocktail-lab',
+    name: 'Home Cocktail Lab',
+    emoji: '🍹',
+    description: 'Shake things up! Create signature cocktails and judge them more harshly than a reality TV show.',
+    estimatedSavings: 120,
+    vibeCategory: 'creative',
+    trending: true,
+  },
+  {
+    id: 'paint-night',
+    name: 'DIY Paint Night',
+    emoji: '🎨',
+    description: 'YouTube tutorial + wine + canvas = your next masterpiece (or hilarious disaster).',
+    estimatedSavings: 80,
+    vibeCategory: 'creative',
+    trending: false,
+  },
+  {
+    id: 'playlist-curator',
+    name: 'Ultimate Playlist Creation',
+    emoji: '🎧',
+    description: 'Curate the perfect playlist for every mood. This is important work, honestly.',
+    estimatedSavings: 50,
+    vibeCategory: 'creative',
+    trending: false,
+  },
+  {
+    id: 'journaling-sesh',
+    name: 'Journaling Session',
+    emoji: '✍️',
+    description: 'Pour your thoughts onto paper. Cheaper than therapy, more private than Twitter.',
+    estimatedSavings: 45,
+    vibeCategory: 'creative',
+    trending: false,
+  },
+  {
+    id: 'photo-organizing',
+    name: 'Memory Lane Deep Dive',
+    emoji: '📸',
+    description: 'Finally organize those 10,000 camera roll photos. Find gems. Delete the blurry ones.',
+    estimatedSavings: 40,
+    vibeCategory: 'creative',
+    trending: false,
+  },
+  {
+    id: 'vision-board',
+    name: 'Vision Board Night',
+    emoji: '✨',
+    description: 'Manifest your dreams with scissors, magazines, and main character energy.',
+    estimatedSavings: 55,
+    vibeCategory: 'creative',
+    trending: true,
+  },
+  {
+    id: 'diy-decor',
+    name: 'DIY Room Refresh',
+    emoji: '🪴',
+    description: 'Rearrange furniture, add plants, or finally hang that art. Your space, your rules.',
+    estimatedSavings: 90,
+    vibeCategory: 'creative',
+    trending: false,
+  },
+
+  // Social vibes (at home)
+  {
+    id: 'game-night',
+    name: 'Epic Game Night',
+    emoji: '🎲',
+    description: 'Board games, card games, video games—may the best friend win (and the snacks be plentiful).',
+    estimatedSavings: 150,
+    vibeCategory: 'social',
+    trending: true,
+  },
+  {
+    id: 'potluck-party',
+    name: 'Potluck House Party',
+    emoji: '🥘',
+    description: 'Everyone brings a dish, nobody goes broke. Community vibes without the restaurant bill.',
+    estimatedSavings: 180,
+    vibeCategory: 'social',
+    trending: false,
+  },
+  {
+    id: 'movie-night-friends',
+    name: 'Bad Movie Night',
+    emoji: '🍿',
+    description: "Intentionally watch terrible movies and provide live commentary. It's MST3K energy.",
+    estimatedSavings: 140,
+    vibeCategory: 'social',
+    trending: false,
+  },
+  {
+    id: 'karaoke-home',
+    name: 'Living Room Karaoke',
+    emoji: '🎤',
+    description: "YouTube karaoke, hairbrush mics, zero judgment. Belt it out like no one's watching.",
+    estimatedSavings: 130,
+    vibeCategory: 'social',
+    trending: true,
+  },
+  {
+    id: 'cooking-challenge',
+    name: 'Chopped: Home Edition',
+    emoji: '👨‍🍳',
+    description: 'Pick mystery ingredients, set a timer, and compete to make the best dish. Drama included.',
+    estimatedSavings: 160,
+    vibeCategory: 'social',
+    trending: false,
+  },
+  {
+    id: 'wine-tasting',
+    name: 'Grocery Store Sommelier',
+    emoji: '🍷',
+    description: 'Grab $10 wines and rate them like fancy critics. Swirl, sniff, sip, be pretentious.',
+    estimatedSavings: 175,
+    vibeCategory: 'social',
+    trending: false,
+  },
+  {
+    id: 'trivia-night',
+    name: 'At-Home Trivia',
+    emoji: '🧠',
+    description: 'Host your own trivia with obscure categories. Finally, your random knowledge pays off.',
+    estimatedSavings: 145,
+    vibeCategory: 'social',
+    trending: false,
+  },
+  {
+    id: 'murder-mystery',
+    name: 'Murder Mystery Dinner',
+    emoji: '🔍',
+    description: 'Dress up, get into character, and figure out who "did it." Suspense without the Uber surge.',
+    estimatedSavings: 200,
+    vibeCategory: 'social',
+    trending: true,
+  },
+
+  // Self-care vibes
+  {
+    id: 'spa-night',
+    name: 'Spa Night Extravaganza',
+    emoji: '🧖',
+    description: 'Face masks, bubble bath, cucumber eyes—the whole nine yards. You deserve it.',
+    estimatedSavings: 100,
+    vibeCategory: 'self-care',
+    trending: true,
+  },
+  {
+    id: 'yoga-flow',
+    name: 'YouTube Yoga Flow',
+    emoji: '🧘',
+    description: "Find a free yoga video and stretch out the week's stress. Namaste home tonight.",
+    estimatedSavings: 60,
+    vibeCategory: 'self-care',
+    trending: false,
+  },
+  {
+    id: 'meditation-marathon',
+    name: 'Meditation Marathon',
+    emoji: '🕯️',
+    description: 'Candles lit, phone off, thoughts floating away. Inner peace is free, FYI.',
+    estimatedSavings: 50,
+    vibeCategory: 'self-care',
+    trending: false,
+  },
+  {
+    id: 'skincare-routine',
+    name: 'K-Beauty Deep Dive',
+    emoji: '💆',
+    description: "Finally use all 12 steps of that skincare routine you've been meaning to try.",
+    estimatedSavings: 85,
+    vibeCategory: 'self-care',
+    trending: false,
+  },
+  {
+    id: 'digital-detox',
+    name: 'Digital Detox Night',
+    emoji: '📵',
+    description: "Put the phone in a drawer. Remember what it's like to be bored. Revolutionary.",
+    estimatedSavings: 35,
+    vibeCategory: 'self-care',
+    trending: true,
+  },
+  {
+    id: 'sleep-optimization',
+    name: 'Sleep Like Royalty',
+    emoji: '😴',
+    description: 'Fresh sheets, early bedtime, sleep sounds. Tomorrow-you will be so grateful.',
+    estimatedSavings: 30,
+    vibeCategory: 'self-care',
+    trending: false,
+  },
+
+  // Adventure vibes (at home)
+  {
+    id: 'virtual-travel',
+    name: 'Virtual World Tour',
+    emoji: '🌍',
+    description: 'Google Earth + documentaries + themed snacks = passport not required.',
+    estimatedSavings: 180,
+    vibeCategory: 'adventure',
+    trending: false,
+  },
+  {
+    id: 'living-room-camping',
+    name: 'Living Room Camping',
+    emoji: '⛺',
+    description: 'Build a blanket fort, make s\'mores, tell spooky stories. Nature without the bugs.',
+    estimatedSavings: 150,
+    vibeCategory: 'adventure',
+    trending: true,
+  },
+  {
+    id: 'theme-night',
+    name: 'Around the World Theme Night',
+    emoji: '🗺️',
+    description: 'Pick a country, cook their food, watch their films, learn a phrase. Cultural immersion at home.',
+    estimatedSavings: 120,
+    vibeCategory: 'adventure',
+    trending: false,
+  },
+  {
+    id: 'star-gazing',
+    name: 'Backyard Stargazing',
+    emoji: '🔭',
+    description: 'Grab a blanket, download a star app, and ponder the universe. Deep thoughts optional.',
+    estimatedSavings: 75,
+    vibeCategory: 'adventure',
+    trending: false,
+  },
+  {
+    id: 'escape-room-home',
+    name: 'At-Home Escape Room',
+    emoji: '🔐',
+    description: 'Print out a puzzle game or go digital. Save money AND feel like a genius.',
+    estimatedSavings: 110,
+    vibeCategory: 'adventure',
+    trending: false,
+  },
+  {
+    id: 'food-tour',
+    name: 'Apartment Food Tour',
+    emoji: '🌮',
+    description: 'Order small bites from different spots and rate them all. Food critic era unlocked.',
+    estimatedSavings: 95,
+    vibeCategory: 'adventure',
+    trending: false,
+  },
+
+  // Learning vibes
+  {
+    id: 'masterclass-binge',
+    name: 'MasterClass Marathon',
+    emoji: '🎓',
+    description: 'Learn from the greats. Cooking, writing, poker—tonight you level up.',
+    estimatedSavings: 70,
+    vibeCategory: 'learning',
+    trending: false,
+  },
+  {
+    id: 'new-skill',
+    name: 'YouTube University',
+    emoji: '💡',
+    description: 'Pick something random—lockpicking, origami, coding—and go down the rabbit hole.',
+    estimatedSavings: 45,
+    vibeCategory: 'learning',
+    trending: true,
+  },
+  {
+    id: 'documentary-deep-dive',
+    name: 'Documentary Deep Dive',
+    emoji: '🎥',
+    description: 'Pick a fascinating topic and become an armchair expert by midnight.',
+    estimatedSavings: 65,
+    vibeCategory: 'learning',
+    trending: false,
+  },
+  {
+    id: 'language-night',
+    name: 'Language Learning Night',
+    emoji: '🗣️',
+    description: 'Duolingo streak activated. Tonight you become slightly less monolingual.',
+    estimatedSavings: 40,
+    vibeCategory: 'learning',
+    trending: false,
+  },
+  {
+    id: 'ted-talks',
+    name: 'TED Talk Rabbit Hole',
+    emoji: '🎙️',
+    description: "One talk leads to another. Before you know it, you've solved climate change (in theory).",
+    estimatedSavings: 55,
+    vibeCategory: 'learning',
+    trending: false,
+  },
+  {
+    id: 'finance-night',
+    name: 'Finance Glow-Up Night',
+    emoji: '📊',
+    description: 'Review your budget, set goals, feel like you have your life together. Very adult.',
+    estimatedSavings: 50,
+    vibeCategory: 'learning',
+    trending: false,
+  },
+];
+
+/**
+ * Returns a random JOMO activity from the list
+ */
+export function getRandomActivity(): JomoActivity {
+  const randomIndex = Math.floor(Math.random() * jomoActivities.length);
+  return jomoActivities[randomIndex];
+}
+
+/**
+ * Returns all trending JOMO activities
+ */
+export function getTrendingActivities(): JomoActivity[] {
+  return jomoActivities.filter((activity) => activity.trending);
+}

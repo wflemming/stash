@@ -52,7 +52,7 @@ export default function Dashboard() {
           className="flex justify-between items-center mb-12"
         >
           <Link href="/">
-            <h1 className="text-2xl font-bold text-white">Stash</h1>
+            <h1 className="text-2xl font-bold text-white">JOFO</h1>
           </Link>
           <Link href="/pledge">
             <Button className="bg-indigo-600 hover:bg-indigo-700">

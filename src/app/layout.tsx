@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Stash",
-  description: "Social saving for homebodies. Find trending stay-in vibes, stash the savings.",
+  title: "JOFO - Joy of Financing Out",
+  description: "JOFO (Joy of Financing Out) - a fintech app that turns staying in into compound growth. Skip the night out, invest the savings, watch $127 become $274. Built with Next.js 16, React 19, TypeScript, Tailwind CSS, and Framer Motion.",
 };
 
 export default function RootLayout({
